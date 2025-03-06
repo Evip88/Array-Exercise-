@@ -69,3 +69,21 @@ function removeDuplicates3(array) {
 
 // Test case
 console.log(removeDuplicates3[(1, 2, 2, 3, 4, 4, 5)]); // ➞ [1, 2, 3, 4, 5]
+
+function removeDuplicates(array) {
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    let exists = false;
+
+    for (let j = 0; j < result.length; j++) {
+      if (result[j] === array[i]) {
+        exists = true;
+        break;
+      }
+    }
+    if (!exists) {
+      result.push(array[i]);
+    }
+  }
+  return result;
+}
