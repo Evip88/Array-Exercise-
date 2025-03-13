@@ -37,18 +37,20 @@ console.log(runningSumImperative([1, 2, 3, 4])); // Output: [1, 3, 6, 10]
 
 const runningSumDeclarative = (nums) =>
   nums.reduce((acc, curr, i) => {
-    acc.push((acc[i - 1] || 0) + curr); // Step 4: Add previous sum or start from 0
-    return acc; // Step 5: Store result in accumulator
-  }, []); // Step 2: Start with an empty array
+    acc.push((acc[i - 1] || 0) + curr);
+    return acc;
+  }, []);
 
 // Example usage
 console.log(runningSumDeclarative([1, 2, 3, 4])); // Output: [1, 3, 6, 10]
 
-// Summary & Key Differences
+// Alternative Cleaner Approach (Using .map() for Clarity)
 
-// Approach	How It Works	Pros	Cons
-// Imperative (Loop-based)	Uses a for loop to manually track and update sum.	Easy to understand, clear step-by-step process.	More lines of code, mutates variables.
-// Declarative (Functional)	Uses .reduce() to process the array functionally.	More concise, follows functional programming principles.	Might be harder to grasp for beginners.
-// Final Thoughts
-// Use the imperative approach if you prefer explicit steps and control.
-// Use the declarative approach if you prefer concise, functional-style code.
+const runningSum = (nums) => {
+  let sum = 0;
+  return nums.map((num) => (sum += num));
+};
+
+console.log(runningSum([1, 2, 3, 4])); // ➞ [1, 3, 6, 10]
+
+const runningSum = (nums) => nums.map((num, sum = 0) => (sum += num));
